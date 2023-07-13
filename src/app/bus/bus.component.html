@@ -1,0 +1,70 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="col-md-12">
+          <div class="card card-plain">
+            <div class="card-header card-header-danger" >
+              <h4 class="card-title mt-0">Table on Plain Background</h4>
+              <p class="card-category">Here is a subtitle for this table</p>
+              <button class="btn btn-primary btn-sm" (click)="openModal()">Add New Bus</button>
+            </div>
+            <div class="card-body">
+              <div class="table-responsive">
+                <table class="table table-hover">
+                  <thead>
+                    <tr>
+                      <th>ID</th>
+                      <th>Number</th>
+                      <th>Brand</th>
+                      <th>License Plate</th>
+                      <th>Number of Seats</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr *ngFor="let bus of buses">
+                      <td>{{ bus.id }}</td>
+                      <td>{{ bus.num_bus }}</td>
+                      <td>{{ bus.marque_bus }}</td>
+                      <td>{{ bus.immatriculation_bus }}</td>
+                      <td>{{ bus.nb_places }}</td>
+                      <td>
+                        <button class="btn btn-primary btn-sm" (click)="updateBus(bus)">Edit</button>
+                        <button class="btn btn-danger btn-sm" (click)="deleteBus(bus.id)">Delete</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div class="modal" tabindex="-1" role="dialog" [class.show]="showModal">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Add New Bus</h5>
+        <button type="button" class="close" aria-label="Close" (click)="closeModal()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <!-- Form to add new bus -->
+        <form (submit)="createBus()">
+          <!-- Add form fields for bus properties -->
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" (click)="closeModal()">Cancel</button>
+        <button type="submit" class="btn btn-primary">Save</button>
+      </div>
+    </div>
+  </div>
+</div>
